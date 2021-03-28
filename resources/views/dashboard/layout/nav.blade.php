@@ -360,6 +360,22 @@
           <p>Level 1</p>
         </a>
       </li>
+        {{-- Quản lí danh mục sản phẩm --}}
+      <li class="nav-header">Quản lí danh mục sản phẩm</li>
+      <li class="nav-item">
+        <a href="/category/add" class="nav-link">
+          <i class="nav-icon far fa-circle text-danger"></i>
+          <p class="text">Thêm mới danh mục</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/category/list" class="nav-link">
+          <i class="nav-icon far fa-circle text-warning"></i>
+          <p>Danh sách danh mục</p>
+        </a>
+      </li>
+
+      {{-- Quản lý đơn vị vận chuyển --}}
       <li class="nav-header">Quản lí đơn vị vận chuyển</li>
       <li class="nav-item">
         <a href="#" class="nav-link">

@@ -22,4 +22,10 @@ Route::group(['middleware' => ['check.login']], function () {
 
 Route::group(['middleware' => ['check.logout']], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
+
+
+    Route::group(['prefix' => 'category'], function () {
+        Route::get('/add', 'CategoryController@add')->name('dashboard.category.add');
+        Route::post('/addPost', 'CategoryController@addPost')->name('dashboard.category.addPost');
+    });
 });
