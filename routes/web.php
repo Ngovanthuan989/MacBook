@@ -11,4 +11,15 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home.index');
+
+
+
+Route::group(['middleware' => ['check.login']], function () {
+    Route::get('/login', 'HomeController@login')->name('home.login');
+    Route::post('/postLogin', 'HomeController@postLogin')->name('home.postLogin');
+});
+
+
+Route::group(['middleware' => ['check.logout']], function () {
+    Route::get('/', 'HomeController@index')->name('home.index');
+});
