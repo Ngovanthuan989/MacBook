@@ -31,11 +31,11 @@ class HomeController extends Controller
         if (!$request->get('password')) {
             return response('Password không được để trống!',400);
         }
+        $array=[];
         $login = DB::table('customer')->where([
             'email'=> $request->get('email'),
             'password'=> md5($request->get('password'))
         ])->get();
-
         if ($login[0]->id) {
             Cookie::queue('logged_user', json_encode($login[0]->id), 100);
             // $subject ="Mã xác thực được gửi từ MacTree";

@@ -40,7 +40,8 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 mt-2">
-                    <button type="button" class="btn btn-search btn-primary add-category">Lưu</button>
+                    {{-- <button type="button" class="btn btn-search btn-primary add-category">Lưu</button> --}}
+                    <button type="button" class="btn btn-primary add-category"><i class="fas fa-plus"></i> Lưu</button>
                 </div>
             </div>
     </div>
