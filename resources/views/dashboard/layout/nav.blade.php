@@ -44,7 +44,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/category/list" class="nav-link">
+        <a href="/category" class="nav-link">
           <i class="nav-icon fas fa-file"></i>
           <p>Danh sách danh mục</p>
         </a>

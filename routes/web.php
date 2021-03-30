@@ -26,6 +26,10 @@ Route::group(['middleware' => ['check.logout']], function () {
 
     Route::group(['prefix' => 'category'], function () {
         Route::get('/add', 'CategoryController@add')->name('dashboard.category.add');
+        Route::get('/', 'CategoryController@index')->name('dashboard.category.show');
+        Route::get('/edit/{id}', 'CategoryController@edit')->name('dashboard.category.edit');
+        Route::post('/update', 'CategoryController@update')->name('dashboard.category.update');
+        Route::post('/delete', 'CategoryController@delete')->name('dashboard.category.delete');
         Route::post('/addPost', 'CategoryController@addPost')->name('dashboard.category.addPost');
     });
 });
