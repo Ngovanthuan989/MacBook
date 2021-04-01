@@ -23,13 +23,13 @@
       </li>
       <li class="nav-header">Quản lí sản phẩm</li>
       <li class="nav-item">
-        <a href="/category/add" class="nav-link">
+        <a href="/product/add" class="nav-link">
            <i class="nav-icon fas fa-plus"></i>
           <p class="text">Thêm mới sản phẩm</p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+        <a href="/product" class="nav-link">
           <i class="nav-icon fas fa-file"></i>
           <p>Danh sách sản phẩm</p>
         </a>
@@ -53,13 +53,13 @@
       {{-- Quản lý đơn vị vận chuyển --}}
       <li class="nav-header">Quản lí đơn vị vận chuyển</li>
       <li class="nav-item">
-        <a href="/category/add" class="nav-link">
+        <a href="/ship/add" class="nav-link">
            <i class="nav-icon fas fa-plus"></i>
           <p class="text">Thêm mới</p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="/category/list" class="nav-link">
+        <a href="/ship" class="nav-link">
           <i class="nav-icon fas fa-file"></i>
           <p>Danh sách vận chuyển</p>
         </a>
@@ -68,13 +68,13 @@
 
       <li class="nav-header">Quản lí hình thức thanh toán</li>
       <li class="nav-item">
-        <a href="/category/add" class="nav-link">
+        <a href="/pay/add" class="nav-link">
            <i class="nav-icon fas fa-plus"></i>
           <p class="text">Thêm mới</p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="/category/list" class="nav-link">
+        <a href="/pay" class="nav-link">
           <i class="nav-icon fas fa-file"></i>
           <p>Danh sách</p>
         </a>

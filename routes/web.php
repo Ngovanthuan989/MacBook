@@ -32,4 +32,13 @@ Route::group(['middleware' => ['check.logout']], function () {
         Route::post('/delete', 'CategoryController@delete')->name('dashboard.category.delete');
         Route::post('/addPost', 'CategoryController@addPost')->name('dashboard.category.addPost');
     });
+
+    Route::group(['prefix' => 'pay'], function () {
+        Route::get('/add', 'PayController@add')->name('dashboard.pay.add');
+        Route::get('/', 'PayController@index')->name('dashboard.pay.show');
+        Route::get('/edit/{id}', 'PayController@edit')->name('dashboard.pay.edit');
+        Route::post('/update', 'PayController@update')->name('dashboard.pay.update');
+        Route::post('/delete', 'PayController@delete')->name('dashboard.pay.delete');
+        Route::post('/addPost', 'PayController@addPost')->name('dashboard.pay.addPost');
+    });
 });
