@@ -8,6 +8,10 @@ use App\Helpers\HttpRequestHelper;
 use App\Helpers\MailHelper;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Customers;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+
+
 
 
 class HomeController extends Controller
@@ -22,32 +26,108 @@ class HomeController extends Controller
     {
         return view('dashboard.home.login');
     }
+    public function register()
+    {
+        return view('dashboard.home.register');
+    }
+
+    public function postRegister(Request $request)
+    {
+        if (!$request->get('full_name')) {
+            return response('Tên không được để trống!',400);
+        }
+        if (!$request->get('email')) {
+            return response('Email không được để trống!',400);
+        }
+        if (!$request->get('password')) {
+            return response('Mật khẩu không được để trống!',400);
+        }
+        if ($request->get('password')!=$request->get('password2')) {
+            return response('Mật khẩu không trùng khớp!',400);
+        }
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'email' => 'required|email',
+        ], [
+            'phone.regex'    => 'Số điện thoại không đúng định dạng',
+            'phone.required' => 'Số điện thoại không được để trống',
+            'email.email'    => 'Email không đúng định dạng',
+        ]);
+        if ($validator->fails()) {
+            return response($validator->errors()->first(), 400);
+        }
+
+        $get_email=DB::table('customer')->select('email')->get();
+
+        $array_code=[];
+
+        foreach ($get_email as $key => $value) {
+            array_push ($array_code, $value->email);
+        }
+
+        $check_email = in_array($request->get('email'),$array_code);
+
+        if ($check_email==true) {
+            return response('Email này đã tồn tại trong hệ thống!',400);
+        }
+
+        $get_phone=DB::table('customer')->select('phone')->get();
+
+        $array_phone=[];
+        foreach ($get_phone as $key => $value) {
+            array_push ($array_phone, $value->phone);
+        }
+
+        $check_phone = in_array($request->get('phone'),$array_phone);
+
+        if ($check_phone==true) {
+            return response('Số điện thoại này đã tồn tại trong hệ thống!',400);
+        }
+
+        $customer = new Customers;
+        $customer -> full_name = $request->get('full_name');
+        $customer -> email     = $request->get('email');
+        $customer -> phone     = $request->get('phone');
+        $customer -> password  = md5($request->get('password'));
+        $customer -> save();
+
+        if ($customer->wasRecentlyCreated == true) {
+            return response('Đăng kí thành công đang chờ xác thực!');
+        }else{
+            return response('Đăng kí không thành công',400);
+        }
+    }
 
     public function postLogin(Request $request)
     {
         if (!$request->get('email')) {
             return response('Email không được để trống!',400);
         }
+
         if (!$request->get('password')) {
             return response('Password không được để trống!',400);
         }
-        $array=[];
-        $login = DB::table('customer')->where([
-            'email'=> $request->get('email'),
-            'password'=> md5($request->get('password'))
-        ])->get();
-        if ($login[0]->id) {
-            Cookie::queue('logged_user', json_encode($login[0]->id), 100);
-            // $subject ="Mã xác thực được gửi từ MacTree";
-            // $email_to = $request->get('email');
-            // $content = '<p><b>Mã xác thực</b>: 234567</p>
-            // ';
 
-            // $send_mail = MailHelper::sendEmail($subject,$email_to,$content);
-            return response('Thành công');
+        $login = DB::table('customer')->where([
+            'email'     =>  $request     -> get('email'),
+            'password'  =>  md5($request -> get('password'))
+        ])->get();
+
+        if ($login[0] -> permission == null) {
+            return response('Tài khoản chưa được xác thực!',400);
+        }
+        $verification_codes = mt_rand(100000,999999);
+        if ($login[0] -> id) {
+//            Cookie::queue('logged_user', json_encode($login[0]->id), 100);
+            $subject ="Mã xác thực được gửi từ MacTree";
+            $email_to = $request->get('email');
+            $content = '<p><b>Công cty cổ phần MacTree</b></p>
+                        <p><b>Mã xác thực</b>:'.$verification_codes.'</p>
+            ';
+            MailHelper::sendEmail($subject,$email_to,$content);
+            return response('Mã xác thực được gửi đến mail!Bạn vui lòng check mail để đăng nhập!');
         }
         return response('Tài khoản hoặc mật khẩu sai!',400);
-
 
     }
 }

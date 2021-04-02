@@ -20,7 +20,7 @@
     @include('elements.loading')
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b>-Quản lý</a>
+    <a href="/"><b>Admin</b>-Quản lý</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -59,7 +59,7 @@
           <!-- /.col -->
         </div>
 
-      <div class="social-auth-links text-center mb-3">
+      {{-- <div class="social-auth-links text-center mb-3">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
@@ -67,14 +67,14 @@
         <a href="#" class="btn btn-block btn-danger">
           <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
         </a>
-      </div>
+      </div> --}}
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
+        <a href="forgot-password.html">Quên mật khẩu</a>
       </p>
       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <a href="/register" class="text-center">Đăng kí tài khoản quản lý</a>
       </p>
     </div>
     <!-- /.login-card-body -->
@@ -108,7 +108,7 @@ $(document).on("click",".login-admin",function() {
             }
         }).then(function (response) {
             Toastr.success(response.data);
-            window.location='/';
+            // window.location='/';
         }).catch(function(error) {
             Toastr.error(error.response.data);
         }).finally(function() {
