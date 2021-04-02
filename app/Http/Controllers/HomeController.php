@@ -9,7 +9,8 @@ use App\Helpers\MailHelper;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Customers;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+
 
 
 
@@ -120,17 +121,43 @@ class HomeController extends Controller
         $verification_codes = mt_rand(100000,999999);
 
         if ($login[0] -> id) {
-//            Cookie::queue('logged_user', json_encode($login[0]->id), 100);
+            Session::put('user_id', $login[0] -> id);
             $subject ="Mã xác thực được gửi từ MacTree";
             $email_to = $request->get('email');
             $content = '<p><b>Công cty cổ phần MacTree</b></p>
                         <p><b>Mã xác thực</b>:'.$verification_codes.'</p>
             ';
             MailHelper::sendEmail($subject,$email_to,$content);
-            return response('Mã xác thực được gửi đến mail!Bạn vui lòng check mail để đăng nhập!');
+
+            $update = Customers::where('id',$login[0] -> id)->update(array(
+                'code_accuracy' => $verification_codes,
+            ));
+
+            if ($update == 1){
+                return response('Mã xác thực được gửi đến mail!Bạn vui lòng check mail để đăng nhập!');
+            }else{
+                return response('Có lỗi xảy ra!',400);
+            }
         }
 
         return response('Tài khoản hoặc mật khẩu sai!',400);
+
+    }
+
+    public function checkCode(Request $request)
+    {
+        $id = Session::get('user_id');
+
+        $login = DB::table('customer')->where([
+            'id'     =>  $id
+        ])->get();
+
+        if($login[0] -> code_accuracy == $request->get('code_accuracy')){
+            Cookie::queue('logged_user', json_encode($id), 100);
+            return response('Thành công!');
+        }else{
+            return response('Mã xác thực không đúng!',400);
+        }
 
     }
 }

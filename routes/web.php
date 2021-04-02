@@ -19,6 +19,7 @@ Route::group(['middleware' => ['check.login']], function () {
     Route::get('/register', 'HomeController@register')->name('home.register');
     Route::post('/postRegister', 'HomeController@postRegister')->name('home.postRegister');
     Route::post('/postLogin', 'HomeController@postLogin')->name('home.postLogin');
+    Route::post('/checkCode', 'HomeController@checkCode')->name('home.checkCode');
 });
 
 

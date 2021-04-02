@@ -135,7 +135,6 @@ $(document).on("click",".login-admin",function() {
                 '          <!-- /.col -->\n' +
                 '        </div>');
             Toastr.success(response.data);
-            // window.location='/';
         }).catch(function(error) {
             Toastr.error(error.response.data);
         }).finally(function() {
@@ -143,5 +142,27 @@ $(document).on("click",".login-admin",function() {
         });
 });
 </script>
+
+    <script>
+        $(document).on("click",".login-code",function() {
+            Loading.show();
+            var code_accuracy = $('.code_accuracy').val();
+            axios({
+                method: 'post',
+                url: '/checkCode',
+                data: {
+                    code_accuracy: code_accuracy,
+                }
+            }).then(function (response) {
+                Toastr.success(response.data);
+                window.location='/';
+            }).catch(function(error) {
+                Toastr.error(error.response.data);
+            }).finally(function() {
+                Loading.hide();
+            });
+        });
+    </script>
+
 </body>
 </html>
