@@ -116,7 +116,9 @@ class HomeController extends Controller
         if ($login[0] -> permission == null) {
             return response('Tài khoản chưa được xác thực!',400);
         }
+
         $verification_codes = mt_rand(100000,999999);
+
         if ($login[0] -> id) {
 //            Cookie::queue('logged_user', json_encode($login[0]->id), 100);
             $subject ="Mã xác thực được gửi từ MacTree";
@@ -127,6 +129,7 @@ class HomeController extends Controller
             MailHelper::sendEmail($subject,$email_to,$content);
             return response('Mã xác thực được gửi đến mail!Bạn vui lòng check mail để đăng nhập!');
         }
+
         return response('Tài khoản hoặc mật khẩu sai!',400);
 
     }

@@ -107,6 +107,33 @@ $(document).on("click",".login-admin",function() {
                 password:password
             }
         }).then(function (response) {
+            $('.card').html('');
+            $('.card').html('<div class="card-body login-card-body">\n' +
+                '      <p class="login-box-msg">Nhập mã xác thực</p>\n' +
+                '\n' +
+                '        <div class="input-group mb-3">\n' +
+                '          <input type="password" class="form-control code_accuracy" placeholder="Mã xác thực">\n' +
+                '          <div class="input-group-append">\n' +
+                '            <div class="input-group-text">\n' +
+                '              <span class="fas fa-lock"></span>\n' +
+                '            </div>\n' +
+                '          </div>\n' +
+                '        </div>\n' +
+                '        <div class="row">\n' +
+                '          <div class="col-8">\n' +
+                '            <div class="icheck-primary">\n' +
+                '              {{-- <input type="checkbox" id="remember"> --}}\n' +
+                '              <label for="remember">\n' +
+                '                {{-- Remember Me --}}\n' +
+                '              </label>\n' +
+                '            </div>\n' +
+                '          </div>\n' +
+                '          <!-- /.col -->\n' +
+                '          <div class="col-4">\n' +
+                '            <button type="button" class="btn btn-primary btn-block login-code">Lưu</button>\n' +
+                '          </div>\n' +
+                '          <!-- /.col -->\n' +
+                '        </div>');
             Toastr.success(response.data);
             // window.location='/';
         }).catch(function(error) {
