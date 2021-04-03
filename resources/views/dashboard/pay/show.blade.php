@@ -1,5 +1,6 @@
 @extends('dashboard.layout.master')
 @section('main')
+    <link rel="stylesheet" href="https://dongiannhat.salekit.vn/assets/css/ace_agency.css?vs=0.1150">
 
 <div class="container">
     <div class="title">

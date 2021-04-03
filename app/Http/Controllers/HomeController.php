@@ -175,9 +175,16 @@ class HomeController extends Controller
         $user = DB::table('customer')->where([
             'id'     =>  $id
         ])->get();
+
         return view('dashboard.home.profile',[
             'user' => $user[0]
         ]);
+    }
+
+
+    public function editProfile(Request $request)
+    {
+        return view('dashboard.home.editProfile');
     }
 
 }

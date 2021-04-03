@@ -1,6 +1,7 @@
 
 @extends('dashboard.layout.master')
 @section('main')
+    <link rel="stylesheet" href="https://dongiannhat.salekit.vn/assets/css/ace_agency.css?vs=0.1150">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -32,7 +33,7 @@
                             {{--</li>--}}
                         {{--</ul>--}}
 
-                        <a href="#" class="btn btn-primary btn-block"><b>Chỉnh sửa</b></a>
+                        <a href="{{ route('dashboard.profile.edit', ['id' => $user->id]) }}" class="btn btn-primary btn-block"><b>Chỉnh sửa</b></a>
                     </div>
                     <!-- /.card-body -->
                 </div>

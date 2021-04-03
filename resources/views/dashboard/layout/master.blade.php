@@ -14,7 +14,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('/backend/dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-  @yield('css')
+
+    @yield('css')
 </head>
 {{--dark-mode--}}
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

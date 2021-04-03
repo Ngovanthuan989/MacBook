@@ -26,7 +26,12 @@ Route::group(['middleware' => ['check.login']], function () {
 
 Route::group(['middleware' => ['check.logout']], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
-    Route::get('/profile', 'HomeController@profile')->name('home.profile');
+
+
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', 'HomeController@profile')->name('dashboard.profile.show');
+        Route::get('/edit/{id}', 'HomeController@editProfile')->name('dashboard.profile.edit');
+    });
 
 
     Route::group(['prefix' => 'category'], function () {
