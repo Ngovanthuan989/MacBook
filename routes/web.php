@@ -20,11 +20,13 @@ Route::group(['middleware' => ['check.login']], function () {
     Route::post('/postRegister', 'HomeController@postRegister')->name('home.postRegister');
     Route::post('/postLogin', 'HomeController@postLogin')->name('home.postLogin');
     Route::post('/checkCode', 'HomeController@checkCode')->name('home.checkCode');
+    Route::get('/logout', 'HomeController@logout')->name('home.logout');
 });
 
 
 Route::group(['middleware' => ['check.logout']], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('/profile', 'HomeController@profile')->name('home.profile');
 
 
     Route::group(['prefix' => 'category'], function () {
@@ -44,4 +46,14 @@ Route::group(['middleware' => ['check.logout']], function () {
         Route::post('/delete', 'PayController@delete')->name('dashboard.pay.delete');
         Route::post('/addPost', 'PayController@addPost')->name('dashboard.pay.addPost');
     });
+
+    Route::group(['prefix' => 'permission'], function () {
+        Route::get('/add', 'PermissionController@add')->name('dashboard.permission.add');
+        Route::get('/', 'PermissionController@index')->name('dashboard.permission.show');
+        Route::get('/edit/{id}', 'PermissionController@edit')->name('dashboard.permission.edit');
+        Route::post('/update', 'PermissionController@update')->name('dashboard.permission.update');
+        Route::post('/delete', 'PermissionController@delete')->name('dashboard.permission.delete');
+        Route::post('/addPost', 'PermissionController@addPost')->name('dashboard.permission.addPost');
+    });
+
 });

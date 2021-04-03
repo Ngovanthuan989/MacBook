@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CommonHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\HttpRequestHelper;
@@ -153,11 +154,30 @@ class HomeController extends Controller
         ])->get();
 
         if($login[0] -> code_accuracy == $request->get('code_accuracy')){
-            Cookie::queue('logged_user', json_encode($id), 100);
+            Cookie::queue('logged_user', json_encode($login[0]), 100);
             return response('Thành công!');
         }else{
             return response('Mã xác thực không đúng!',400);
         }
 
     }
+
+    public function logout(Request $request) {
+        // Logout luon
+        CommonHelper::destroyCookie();
+        return redirect()->route('home.index');
+    }
+
+    public function profile(Request $request)
+    {
+        $id = Session::get('user_id');
+
+        $user = DB::table('customer')->where([
+            'id'     =>  $id
+        ])->get();
+        return view('dashboard.home.profile',[
+            'user' => $user[0]
+        ]);
+    }
+
 }
