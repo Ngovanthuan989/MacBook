@@ -87,10 +87,10 @@ class HomeController extends Controller
         }
 
         $customer = new Customers;
-        $customer -> full_name = $request->get('full_name');
-        $customer -> email     = $request->get('email');
-        $customer -> phone     = $request->get('phone');
-        $customer -> password  = md5($request->get('password'));
+        $customer -> full_name = $request     -> get('full_name');
+        $customer -> email     = $request     -> get('email');
+        $customer -> phone     = $request     -> get('phone');
+        $customer -> password  = md5($request -> get('password'));
         $customer -> save();
 
         if ($customer->wasRecentlyCreated == true) {
@@ -238,10 +238,10 @@ class HomeController extends Controller
             }
 
             $update = Customers::where('id',$request->get('id'))->update(array(
-                'full_name' => $request->get('full_name'),
-                'email' => $request->get('email'),
-                'phone' => $request->get('phone'),
-                'avatar' => $filename
+                'full_name' => $request -> get('full_name'),
+                'email'     => $request -> get('email'),
+                'phone'     => $request ->  get('phone'),
+                'avatar'    => $filename
             ));
 
             if ($update==1) {

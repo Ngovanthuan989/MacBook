@@ -16,7 +16,7 @@
                         <h3 class="profile-username text-center">{{$user->full_name}}</h3>
 
                         @if($user->permission==1)
-                            <p class="text-muted text-center">Admin</p>
+                            <p class="text-muted text-center">Owner</p>
                         @else
                             <p class="text-muted text-center"></p>
                         @endif
@@ -75,7 +75,7 @@
                         <strong><i class="fas fa-user-lock mr-1"></i> Quyền truy cập</strong>
 
                         @if($user->permission==1)
-                            <p class="text-muted">Admin</p>
+                            <p class="text-muted">Owner</p>
                         @else
                             <p class="text-muted text-center"></p>
                         @endif

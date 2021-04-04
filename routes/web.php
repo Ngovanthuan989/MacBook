@@ -62,4 +62,13 @@ Route::group(['middleware' => ['check.logout']], function () {
         Route::post('/addPost', 'PermissionController@addPost')->name('dashboard.permission.addPost');
     });
 
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/add', 'UserController@add')->name('dashboard.user.add');
+        Route::get('/', 'UserController@index')->name('dashboard.user.show');
+        Route::get('/edit/{id}', 'UserController@edit')->name('dashboard.user.edit');
+        Route::post('/update', 'UserController@update')->name('dashboard.user.update');
+        Route::post('/delete', 'UserController@delete')->name('dashboard.user.delete');
+        Route::post('/addPost', 'UserController@addPost')->name('dashboard.user.addPost');
+    });
+
 });
