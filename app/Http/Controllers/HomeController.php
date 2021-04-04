@@ -182,9 +182,86 @@ class HomeController extends Controller
     }
 
 
-    public function editProfile(Request $request)
+    public function editProfile($id)
     {
-        return view('dashboard.home.editProfile');
+
+        $user = DB::table('customer')->where([
+            'id'     =>  $id
+        ])->get();
+
+        return view('dashboard.home.editProfile',[
+            'user' => $user[0]
+        ]);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $userInfo = DB::table('customer')->where([
+            'id'     =>  $request->get('id')
+        ])->get();
+
+        $user = $userInfo[0];
+
+        if($request->file('avatar') != ''){
+            $path = public_path().'/uploads/images/';
+
+
+            //upload new file
+            $file = $request->file('avatar');
+            $filename = $file->getClientOriginalName();
+            $file->move($path, $filename);
+
+
+            $validate = Validator::make(
+
+                $request->all(),
+                [
+                    'phone'     => 'required',
+                    'full_name' => 'required',
+                    'email'     => 'required|email'
+
+                ], [
+
+                    'phone.required'     => 'Phone không được bỏ trống',
+                    'email.email'        => 'Email không đúng định dạng',
+                    'full_name.required' => 'Tên không được để trống'
+                ]
+
+            );
+
+
+
+            if ($validate -> fails()) {
+
+                return redirect()->route('dashboard.profile.edit',['id' =>  $request->get('id')])->withErrors($validate)->with('user',$user);
+
+            }
+
+            $update = Customers::where('id',$request->get('id'))->update(array(
+                'full_name' => $request->get('full_name'),
+                'email' => $request->get('email'),
+                'phone' => $request->get('phone'),
+                'avatar' => $filename
+            ));
+
+            if ($update==1) {
+
+                return redirect()->route('dashboard.profile.show')->with('success', 'Cập nhập thành công');
+
+            }else{
+
+                return redirect()->route('dashboard.profile.edit',['id' =>  $request->get('id')])->with(['user'=>$user,'error'=>'Có lỗi xảy ra']);
+
+            }
+
+        }else{
+
+            return redirect()->route('dashboard.profile.edit',['id' =>  $request->get('id')])->with(['user'=>$user,'error'=>'Xin vui lòng chọn ảnh']);
+
+        }
+
+
+
     }
 
 }

@@ -3,29 +3,29 @@
     <link rel="stylesheet" href="https://dongiannhat.salekit.vn/assets/css/ace_agency.css?vs=0.1150">
     <div class="right_col container" role="main">
             <div class="col-xs-12" id="show_success_mss" style="display: none;"></div>
-
+             @include('elements.show_error')
             <div class="profile">
-                <form id="demo-form2" method="post" autocomplete="off" class="form-horizontal form-label-left">
+                <form id="demo-form2" method="post" action="{{ route('dashboard.profile.update') }}" autocomplete="off" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                    @csrf
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <center>
                             <div class="avatar-cs" style="margin-bottom: 30px;">
 
                                 <div class="preview" data-a="">
-                                    <img id="preview" class="preview_img img-round" src="">
+                                    <img id="preview" class="preview_img img-round" src="{{asset('/uploads/images/'.$user->avatar.'')}}">
                                     <i class="fa fa-camera fa-2x" style="display: none;"></i>
                                 </div>
                                 <div class="file-input">
-                                    <input type="hidden" name="photo" class="data-image" value="">
-                                    <input type="file" id="file" class="file-upload" style="display: none;" name="avatar">
+                                    <input type="file" id="file" class="file-upload" style="display: none;" name="avatar" value="{{$user->avatar}}">
                                 </div>
-
+                                <input type="hidden" name="id" value="{{$user->id}}">
                                 <!-- <div class="popup_image customer_avatar" data-url="https://photo.salekit.vn/uploads/salekit_7e51746feafa7f2621f71943da8f603c/60689886e94f4.png" data-input="customer_avatar" name="customer_avatar"></div>
                                <div class="div-name"> -->
-                                <span><b>Thuận Đẹp Trai</b>( ID:154951334)</span>
+                                <span><b>{{$user->full_name}}</b>( ID:{{$user->id}})</span>
                             </div>
                         </center>
                     </div>
-                </form>
+
             </div>
 
             <div class="col-md-6 col-sm-6 col-xs-6">
@@ -33,13 +33,13 @@
                     Họ tên:
                 </label>
                 <div class="col-md-8 col-sm-8 col-xs-12 mr-top-10">
-                    <input type="text" class="form-control contact_name" name="fullname" value="Thuận Đẹp Trai" required="">
+                    <input type="text" class="form-control full_name" name="full_name" value="{{$user->full_name}}" required="">
                 </div>
                 <label class="control-label col-md-4 col-sm-4 col-xs-12 mr-top-10">
                     Số điện thoại:
                 </label>
                 <div class="col-md-8 col-sm-8 col-xs-12 mr-top-10">
-                    <input type="text" name="mobile" class="form-control" value="0969698888">
+                    <input type="text" name="phone" class="form-control phone" value="{{$user->phone}}">
                 </div>
 
                 <br>
@@ -62,7 +62,7 @@
                     Email:
                 </label>
                 <div class="col-md-8 col-sm-8 col-xs-12 mr-top-10">
-                    <input type="text" class="form-control" name="email" autocomplete="off" value="ngovanthuan989@gmail.com" placeholder="Email">
+                    <input type="text" class="form-control" name="email" autocomplete="off" value="{{$user->email}}" placeholder="Email">
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -71,6 +71,7 @@
                     <button id="btn-save" type="submit" class="btn btn-success"><i class="fa fa-save"></i> Lưu</button>
                 </div>
             </div>
+        </form>
 
 
     </div>
@@ -88,7 +89,7 @@
                     var reader = new FileReader();
                     reader.onload = function(e) {
                         $('#preview').remove();
-                        $('.preview').prepend('<img id="preview" class="preview_img" src="'+e.target.result+'">');
+                        $('.preview').prepend('<img id="preview" class="preview_img img-round" src="'+e.target.result+'">');
                         //$('#'+selectId).attr('src', e.target.result);
                         $('.preview_img').rcrop({
                             grid : true,
