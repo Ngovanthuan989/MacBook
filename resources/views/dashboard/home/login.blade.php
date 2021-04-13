@@ -5,94 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Log in - Admin</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('backend/plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="{{asset('themelogin/css/style.css')}}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+
+
 </head>
-<body class="hold-transition login-page">
+<body class="img js-fullheight" style="background-image: url(themelogin/images/bg.jpg);">
     @include('elements.loading')
-<div class="login-box">
-  <div class="login-logo">
-    <a href="/"><b>Admin</b>-Quản lý</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Hãy đăng nhập để sử dụng hệ thống</p>
+	<section class="ftco-section" style="padding: 12em 0;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Công ty cổ phần MacTree</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center cards">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">Đăng nhập</h3>
 
-        <div class="input-group mb-3">
-          <input type="email" class="form-control email" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control password" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              {{-- <input type="checkbox" id="remember"> --}}
-              <label for="remember">
-                {{-- Remember Me --}}
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="button" class="btn btn-primary btn-block login-admin">Sign In</button>
-          </div>
-          <!-- /.col -->
-        </div>
+		      		<div class="form-group">
+		      			<input type="email" class="form-control email" placeholder="Email" >
+		      		</div>
+	            <div class="form-group">
+	              <input type="password" class="form-control password" placeholder="Mật khẩu" >
+	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	            </div>
+	            <div class="form-group">
+	            	<button type="button" class="form-control btn btn-primary login-admin">Đăng nhập</button>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+                        <a href="/register" style="color: #fff">Đăng kí</a>
+                    </div>
+                    <div class="w-50 text-md-right">
+                        <a href="#" style="color: #fff">Quên mật khẩu</a>
+                    </div>
+	            </div>
 
-      {{-- <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div> --}}
-      <!-- /.social-auth-links -->
+	          {{-- <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+	          <div class="social d-flex text-center">
+	          	    <a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+	          	    <a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+	          </div> --}}
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-      <p class="mb-1">
-        <a href="forgot-password.html">Quên mật khẩu</a>
-      </p>
-      <p class="mb-0">
-        <a href="/register" class="text-center">Đăng kí tài khoản quản lý</a>
-      </p>
-    </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
-<!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('backend/dist/js/adminlte.min.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-@include('elements.toastr')
 
+    <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('backend/dist/js/adminlte.min.js')}}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    @include('elements.toastr')
 
 <script>
 $(document).on("click",".login-admin",function() {
@@ -107,33 +84,18 @@ $(document).on("click",".login-admin",function() {
                 password:password
             }
         }).then(function (response) {
-            $('.card').html('');
-            $('.card').html('<div class="card-body login-card-body">\n' +
-                '      <p class="login-box-msg">Nhập mã xác thực</p>\n' +
+            $('.cards').html('');
+            $('.cards').html('<div class="col-md-6 col-lg-4">\n' +
+                '\t\t\t\t\t<div class="login-wrap p-0">\n' +
+                '\t\t      \t<h3 class="mb-4 text-center">Mã xác thực</h3>\n' +
                 '\n' +
-                '        <div class="input-group mb-3">\n' +
-                '          <input type="password" class="form-control code_accuracy" placeholder="Mã xác thực">\n' +
-                '          <div class="input-group-append">\n' +
-                '            <div class="input-group-text">\n' +
-                '              <span class="fas fa-lock"></span>\n' +
-                '            </div>\n' +
-                '          </div>\n' +
-                '        </div>\n' +
-                '        <div class="row">\n' +
-                '          <div class="col-8">\n' +
-                '            <div class="icheck-primary">\n' +
-                '              {{-- <input type="checkbox" id="remember"> --}}\n' +
-                '              <label for="remember">\n' +
-                '                {{-- Remember Me --}}\n' +
-                '              </label>\n' +
-                '            </div>\n' +
-                '          </div>\n' +
-                '          <!-- /.col -->\n' +
-                '          <div class="col-4">\n' +
-                '            <button type="button" class="btn btn-primary btn-block login-code">Lưu</button>\n' +
-                '          </div>\n' +
-                '          <!-- /.col -->\n' +
-                '        </div>');
+                '\t            <div class="form-group">\n' +
+                '\t              <input type="password" class="form-control code_accuracy" placeholder="Mã xác thực" >\n' +
+                '\t              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>\n' +
+                '\t            </div>\n' +
+                '\t            <div class="form-group">\n' +
+                '\t            \t<button type="button" class="form-control btn btn-primary login-code">Lưu</button>\n' +
+                '\t            </div>');
             Toastr.success(response.data);
         }).catch(function(error) {
             Toastr.error(error.response.data);
