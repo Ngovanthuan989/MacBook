@@ -4,48 +4,58 @@
     <link rel="stylesheet" href="https://dongiannhat.salekit.vn/assets/css/ace_agency.css?vs=0.1150">
 
     <div class="container">
-        <div class="title">
-            <h2>Thêm quyền truy cập</h2>
-        </div>
         @include('elements.show_error')
-        <div class="row mt-2">
-            <div class="col-12 col-sm-6">
-                <div class="row mt-3">
-                    <div class="col-6 col-sm-4">
-                        <p class="font-weight-bold mb-0">Tên quyền truy cập</p>
-                    </div>
-                    <div class="col-6 col-sm-8 form-group mb-0">
-                        <input type="text" name="per_name" class="form-control per_name" placeholder="Tên quyền truy cập" value="">
-                    </div>
-                </div>
 
-                <div class="row mt-1">
-                    <div class="col-6 col-sm-4">
-                        <p class="font-weight-bold mb-0">Mã quyền truy cập</p>
-                    </div>
-                    <div class="col-6 col-sm-8 form-group mb-0">
-                        <input type="text" name="per_code" class="form-control per_code" placeholder="Mã quyền truy cập" value="">
-                    </div>
-                </div>
+        <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">Thêm quyền truy cập</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
             </div>
-            <div class="col-12 col-sm-6">
-                <div class="row mt-3">
-                    <div class="col-6 col-sm-4">
-                        <p class="font-weight-bold mb-0">Trạng thái</p>
-                    </div>
-                    <div class="col-6 col-sm-8 form-group mb-0">
-                        <select id="status" class="form-control">
-                            <option value="1">Hoạt động</option>
-                            <option value="2">Dừng hoạt động</option>
-                        </select>
-                    </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Tên quyền truy cập</label>
+                    <input type="text" name="per_name" class="form-control per_name" placeholder="Tên quyền truy cập" value="">
+                  </div>
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                    <label>Mã quyền truy cập</label>
+                    <input type="text" name="per_code" class="form-control per_code" placeholder="Mã quyền truy cập" value="">
+                  </div>
+                  <!-- /.form-group -->
                 </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Trạng thái</label>
+                    <select class="form-control select2bs4" id="status"  style="width: 100%;">
+                        <option value="1">Hoạt động</option>
+                        <option value="2">Dừng hoạt động</option>
+                      </select>
+                  </div>
+                  <!-- /.form-group -->
+                  <!-- /.form-group -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
             </div>
-            <div class="col-12 col-sm-12 mt-2">
-                {{-- <button type="button" class="btn btn-search btn-primary add-category">Lưu</button> --}}
+            <!-- /.card-body -->
+            <div class="card-footer">
                 <button type="button" class="btn btn-primary add-per"><i class="fas fa-plus"></i> Lưu</button>
             </div>
         </div>
+
     </div>
 @endsection
 @section('js')
@@ -76,4 +86,5 @@
 
         });
     </script>
+
 @endsection

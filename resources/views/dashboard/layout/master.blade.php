@@ -14,7 +14,11 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('/backend/dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
+    <style>
+        .layout-navbar-fixed .wrapper .content-wrapper {
+            margin-top: 0px !important;
+        }
+    </style>
     @yield('css')
 </head>
 {{--dark-mode--}}

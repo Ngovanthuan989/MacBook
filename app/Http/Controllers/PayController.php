@@ -42,7 +42,7 @@ class PayController extends Controller
             return response('Mã phương thức này đã tồn tại!',400);
         }
 
-        $pay = new Pay
+        $pay = new Pay;
         $pay -> pay_name = $request->get('pay_name');
         $pay -> pay_code = $request->get('pay_code');
         $pay -> status = $request->get('status');

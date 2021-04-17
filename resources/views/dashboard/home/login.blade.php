@@ -15,7 +15,7 @@
 
 
 </head>
-<body class="img js-fullheight" style="background-image: url(themelogin/images/bg.jpg);">
+<body class="img js-fullheight" style="background-image: url(themelogin/images/desk-gadgets_181624-23300.jpeg);">
     @include('elements.loading')
 	<section class="ftco-section" style="padding: 12em 0;">
 		<div class="container">
