@@ -71,4 +71,13 @@ Route::group(['middleware' => ['check.logout']], function () {
         Route::post('/addPost', 'UserController@addPost')->name('dashboard.user.addPost');
     });
 
+    Route::group(['prefix' => 'product'], function () {
+        Route::get('/add', 'ProductController@add')->name('dashboard.product.add');
+        Route::get('/', 'ProductController@index')->name('dashboard.product.show');
+        Route::get('/edit/{id}', 'ProductController@edit')->name('dashboard.product.edit');
+        Route::post('/update', 'ProductController@update')->name('dashboard.product.update');
+        Route::post('/delete', 'ProductController@delete')->name('dashboard.product.delete');
+        Route::post('/addPost', 'ProductController@addPost')->name('dashboard.product.addPost');
+    });
+
 });
