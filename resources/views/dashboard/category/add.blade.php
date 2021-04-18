@@ -54,7 +54,6 @@
                     <button type="button" class="btn btn-primary add-category"><i class="fas fa-plus"></i> Lưu</button>
                 </div>
             </div>
-
     </div>
 @endsection
 @section('js')

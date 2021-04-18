@@ -4,51 +4,60 @@
     <link rel="stylesheet" href="https://dongiannhat.salekit.vn/assets/css/ace_agency.css?vs=0.1150">
 
     <div class="container">
-            <div class="title">
-                <h2>Sửa danh mục</h2>
-            </div>
-            @include('elements.show_error')
-            <div class="row mt-2 update_cate" data-id="{{$edit_category->id}}">
-                <div class="col-12 col-sm-6">
-                    <div class="row mt-3">
-                        <div class="col-6 col-sm-4">
-                            <p class="font-weight-bold mb-0">Tên danh mục</p>
-                        </div>
-                        <div class="col-6 col-sm-8 form-group mb-0">
-                            <input type="text" name="category_name" class="form-control category_name" placeholder="Tên danh mục" value="{{$edit_category->category_name}}">
-                        </div>
-                    </div>
+        @include('elements.show_error')
+        <div class="card card-default update_cate"  data-id="{{$edit_category->id}}">
+            <div class="card-header">
+                <h3 class="card-title">Cập nhập danh mục sản phẩm</h3>
 
-                    <div class="row mt-1">
-                        <div class="col-6 col-sm-4">
-                            <p class="font-weight-bold mb-0">Mã danh mục</p>
-                        </div>
-                        <div class="col-6 col-sm-8 form-group mb-0">
-                            <input type="text" name="category_code" class="form-control category_code" placeholder="Mã danh mục" value="{{$edit_category->category_code}}">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <div class="row mt-3">
-                        <div class="col-6 col-sm-4">
-                            <p class="font-weight-bold mb-0">Trạng thái</p>
-                        </div>
-                        <div class="col-6 col-sm-8 form-group mb-0">
-                            <select id="status" class="form-control">
-                                <option value="1" @if ($edit_category->status==1)
-                                    selected
-                                @endif>Hoạt động</option>
-                                <option value="2" @if ($edit_category->status==2)
-                                    selected
-                                @endif>Dừng hoạt động</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 mt-2">
-                    <button type="button" class="btn btn-primary update-category"><i class="fas fa-pen-alt"></i> Cập nhập</button>
+                <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
                 </div>
             </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Tên danh mục</label>
+                    <input type="text" name="category_name" class="form-control category_name" placeholder="Tên danh mục" value="{{$edit_category->category_name}}">
+                    </div>
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                    <label>Mã danh mục</label>
+                    <input type="text" name="category_code" class="form-control category_code" placeholder="Mã danh mục" value="{{$edit_category->category_code}}">
+                    </div>
+                    <!-- /.form-group -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Trạng thái</label>
+                        <select id="status" class="form-control select2bs4">
+                        <option value="1" @if ($edit_category->status==1)
+                            selected
+                        @endif>Hoạt động</option>
+                        <option value="2" @if ($edit_category->status==2)
+                            selected
+                        @endif>Dừng hoạt động</option>
+                    </select>
+                    </div>
+                    <!-- /.form-group -->
+                    <!-- /.form-group -->
+                </div>
+                <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" class="btn btn-primary update-category"><i class="fas fa-pen-alt"></i> Cập nhập</button>
+            </div>
+        </div>
     </div>
 @endsection
 @section('js')

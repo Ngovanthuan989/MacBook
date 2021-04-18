@@ -11,7 +11,7 @@ class PayController extends Controller
     //
     public function index()
     {
-        $get_pay=Pay::table('pay')->get();
+        $get_pay=DB::table('pay')->get();
         return view('dashboard.pay.show',
             ['get_pay'=>$get_pay]
         );

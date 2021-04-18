@@ -12,13 +12,13 @@
                         <div class="avatar-cs" style="margin-bottom: 30px;">
 
                             <div class="preview" data-a="">
-                                <img id="preview" class="preview_img img-round" src="{{asset('/uploads/images/unnamed.png')}}">
+                                <img id="preview" class="preview_img img-round" src="{{asset('/uploads/images/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpeg')}}">
                                 <i class="fa fa-camera fa-2x" style="display: none;"></i>
                             </div>
                             <div class="file-input">
-                                <input type="file" id="file" class="file-upload" style="display: none;" name="avatar" value="">
+                                <input type="file" id="file" class="file-upload" style="display: none;" name="avatar" value="{{asset('/uploads/images/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpeg')}}">
                             </div>
-                            <input type="hidden" name="id" value="">
+                            {{-- <input type="hidden" name="id" value=""> --}}
                             <!-- <div class="popup_image customer_avatar" data-url="https://photo.salekit.vn/uploads/salekit_7e51746feafa7f2621f71943da8f603c/60689886e94f4.png" data-input="customer_avatar" name="customer_avatar"></div>
                            <div class="div-name"> -->
                             <span><b>Ảnh Avatar</b></span>
@@ -79,7 +79,7 @@
         <div class="clearfix"></div>
         <div class="form-group">
             <div class="col-12 col-sm-12 mt-2">
-                <button id="btn-save" type="submit" class="btn btn-success"><i class="fa fa-save"></i> Lưu</button>
+                <button id="btn-save" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu</button>
             </div>
         </div>
         </form>

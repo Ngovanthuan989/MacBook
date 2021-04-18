@@ -1,6 +1,11 @@
 
 @extends('dashboard.layout.master')
 @section('main')
+    <style>
+        .profile-user-img {
+            width: 200px;
+        }
+    </style>
     <link rel="stylesheet" href="https://dongiannhat.salekit.vn/assets/css/ace_agency.css?vs=0.1150">
     <div class="container-fluid">
         <div class="row">
@@ -33,7 +38,7 @@
                             {{--</li>--}}
                         {{--</ul>--}}
 
-                        <a href="{{ route('dashboard.profile.edit', ['id' => $user->id]) }}" class="btn btn-primary btn-block"><b>Chỉnh sửa</b></a>
+                        <a href="{{ route('dashboard.profile.edit', ['id' => $user->id]) }}" class="btn btn-primary btn-block"><b>Cập nhập</b></a>
                     </div>
                     <!-- /.card-body -->
                 </div>

@@ -68,7 +68,7 @@
             <div class="clearfix"></div>
             <div class="form-group">
                 <div class="col-12 col-sm-12 mt-2">
-                    <button id="btn-save" type="submit" class="btn btn-success"><i class="fa fa-save"></i> Lưu</button>
+                    <button id="btn-save" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu</button>
                 </div>
             </div>
         </form>

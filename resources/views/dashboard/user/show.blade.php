@@ -2,42 +2,60 @@
 @section('main')
     <link rel="stylesheet" href="https://dongiannhat.salekit.vn/assets/css/ace_agency.css?vs=0.1150">
     <div class="container">
+
+        @include('elements.show_error')
+        <form method="get">
+            <div class="card card-default">
+                <div class="card-header">
+                  <h3 class="card-title">Tìm kiếm người dùng</h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Tên người dùng</label>
+                        <input type="text" name="customer_name" class="form-control customer_name" placeholder="Tên người dùng" value="">
+                      </div>
+                      <!-- /.form-group -->
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control email" placeholder="Email" value="">
+                      </div>
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Trạng thái</label>
+                        <input type="text" name="phone" class="form-control phone" placeholder="Số điện thoại" value="">
+                      </div>
+                      <!-- /.form-group -->
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Tìm kiếm</button>
+                </div>
+            </div>
+        </form>
+
         <div class="title">
             <h2>Danh sách khách hàng</h2>
         </div>
-        @include('elements.show_error')
-        {{--<form method="get">--}}
-            {{--<div class="row">--}}
-                {{--<div class="col-sm-12 col-md-8 col-lg-6">--}}
-                    {{--<div class="row">--}}
-                        {{--<p class="col-sm-3 col-md-4 font-weight-bold">Trạng thái</p>--}}
-                        {{--<div class="col-sm-9 col-md-8 ">--}}
-                            {{--<select class="custom-select" name="status">--}}
-                                {{--<option value="0">Tất cả trạng thái</option>--}}
-                                {{--<option value="1">Hoạt động</option>--}}
-                                {{--<option value="2">Dừng hoạt động</option>--}}
-                            {{--</select>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="row">--}}
-                        {{--<p class="col-sm-3 col-md-4 font-weight-bold">Tên danh mục</p>--}}
-                        {{--<div class="col-sm-9 col-md-8 ">--}}
-                            {{--<input type="text" name="category_name" class="form-control" placeholder="Tên danh mục" value="">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</form>--}}
-        <div class="row">
-            <div class="col-12 col-sm-12 mt-2 ">
-                {{-- <button type="button" class="btn btn-search btn-primary add-category">Lưu</button> --}}
-                <button type="button" class="btn btn-primary float-right"><i class=""></i> Tìm kiếm</button>
-                <a href="user/add" type="button" class="btn-add btn btn-warning float-right"><i class="fas fa-plus"></i> Thêm mới</a>
-            </div>
-        </div>
-
         <div class="content-body">
             <div class="content-body--table table-responsive">
                 <table class="table table-striped table-vcenter">
