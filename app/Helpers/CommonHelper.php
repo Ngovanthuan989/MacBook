@@ -17,7 +17,6 @@ class CommonHelper
         if(Cookie::has('logged_user')) {
             $user = json_decode(Cookie::get('logged_user'));
         }
-        dd($user);
         return $user;
     }
 }

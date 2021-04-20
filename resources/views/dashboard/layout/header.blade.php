@@ -32,7 +32,7 @@
 
         <li class="nav-item dropdown show user user-menu">
             <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
-                <img src="{{asset('/backend/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
+                <img src="{{asset('/uploads/images/'.$user->avatar.'')}}" class="user-image" alt="User Image">
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                 {{--<span class="dropdown-item dropdown-header">15 Notifications</span>--}}
