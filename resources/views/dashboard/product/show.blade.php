@@ -118,7 +118,7 @@
 <script>
     $(document).on("click",".delete_product",function() {
         $.confirm({
-            content: '<p style="color:black;">Bạn có chắc chắn muốn xoá không?</p>',
+            content: '<p style="color:red;">Bạn có chắc chắn muốn xoá không?</p>',
             buttons: {
                 'Yes': {
                     action: function () {
